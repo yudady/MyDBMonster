@@ -6,11 +6,21 @@
 <dbmonster-schema>
 	<name>ipnms</name>
 	<table name="test_data" rows="1000">
+		<key databaseDefault="true"> <!-- 設置主鍵 -->
+			<generator type="pl.kernelpanic.dbmonster.generator.MaxKeyGenerator">
+				<!-- 主鍵生成器，還有一個生成字符串主鍵的StringKeyGenerator類 -->
+				<property name="columnName" value="key_id" /> <!-- 設置主鍵列名 -->
+			</generator>
+		</key>
+
+
 		<column name="int_id">
+			<!-- 設置列屬性，數字生成器 -->
 			<generator type="pl.kernelpanic.dbmonster.generator.NumberGenerator">
 				<property name="nulls" value="0" />
 				<property name="minValue" value="-10000" />
 				<property name="maxValue" value="200000" />
+				<!--可選值short, integer, long, float, double, numeric,默認為short -->
 				<property name="returnedType" value="numeric" />
 				<property name="scale" value="0" />
 			</generator>
@@ -21,12 +31,40 @@
 			</generator>
 		</column>
 		<column name="compress_day">
+			<!-- 時間生成器 -->
 			<generator type="pl.kernelpanic.dbmonster.generator.DateTimeGenerator">
 				<property name="nulls" value="0" />
 				<property name="startDate" value="2006-03-01 00:00:00" />
 				<property name="endDate" value="2006-03-31 00:00:00" />
+				<!-- 可選項date, time, timestamp，默認為date -->
 				<property name="returnedType" value="date" />
 			</generator>
 		</column>
+		<column name="contractnum" databaseDefault="false">
+			<!-- 字符串生成器 -->
+			<generator type="pl.kernelpanic.dbmonster.generator.StringGenerator">
+				<property name="allowSpaces" value="true" />
+				<property name="excludeChars" value="" />
+				<property name="maxLength" value="16" />
+				<property name="minLength" value="12" />
+				<!-- 每100個生成null的概率 -->
+				<property name="nulls" value="10" />
+			</generator>
+		</column>
+
+
+		<column name="sex" databaseDefault="false">
+			<!-- 字符串生成器 -->
+			<generator type="pl.kernelpanic.dbmonster.generator.BooleanGenerator">
+				<property name="probability" value="50" />
+				<!-- 每100個生成null的概率 -->
+				<property name="nulls" value="10" />
+			</generator>
+		</column>
+
+
+
+
+
 	</table>
 </dbmonster-schema>
