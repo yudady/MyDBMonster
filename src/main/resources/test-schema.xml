@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE dbmonster-schema PUBLIC
+    "-//kernelpanic.pl//DBMonster Database Schema DTD 1.1//EN"
+    "http://dbmonster.kernelpanic.pl/dtd/dbmonster-schema-1.1.dtd">
+
+<dbmonster-schema>
+	<name>ipnms</name>
+	<table name="test_data" rows="1000">
+		<column name="int_id">
+			<generator type="pl.kernelpanic.dbmonster.generator.NumberGenerator">
+				<property name="nulls" value="0" />
+				<property name="minValue" value="-10000" />
+				<property name="maxValue" value="200000" />
+				<property name="returnedType" value="numeric" />
+				<property name="scale" value="0" />
+			</generator>
+		</column>
+		<column name="ipaddr">
+			<generator type="pl.kernelpanic.dbmonster.generator.ConstantGenerator">
+				<property name="constant" value="127.0.0.1" />
+			</generator>
+		</column>
+		<column name="compress_day">
+			<generator type="pl.kernelpanic.dbmonster.generator.DateTimeGenerator">
+				<property name="nulls" value="0" />
+				<property name="startDate" value="2006-03-01 00:00:00" />
+				<property name="endDate" value="2006-03-31 00:00:00" />
+				<property name="returnedType" value="date" />
+			</generator>
+		</column>
+	</table>
+</dbmonster-schema>

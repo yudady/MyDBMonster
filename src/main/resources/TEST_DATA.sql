@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS `test_data`;
+CREATE TABLE `test_data` (
+  `key_id` int(11) NOT NULL AUTO_INCREMENT,
+  `INT_ID` int(11) NOT NULL,
+  `IPADDR` varchar(255) DEFAULT NULL,
+  `COMPRESS_DAY` datetime DEFAULT NULL,
+  PRIMARY KEY (`key_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
